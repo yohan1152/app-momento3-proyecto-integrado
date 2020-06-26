@@ -1,0 +1,32 @@
+import React from 'react';
+import { StyleSheet, Text, Button } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+
+const DetailScreen = ({ navigation }) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.textScreen}>Detail Screen</Text>
+
+      <Button title="Go back to Home" onPress={() => navigation.goBack()} />
+    </SafeAreaView>
+  );
+};
+
+DetailScreen.navigationOptions = {
+  title: 'Welcome to Detail Screen!'
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textScreen: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20
+  }
+});
+
+export default DetailScreen;
