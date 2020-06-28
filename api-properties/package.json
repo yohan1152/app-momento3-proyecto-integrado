@@ -1,5 +1,5 @@
 {
-  "name": "medical-appointments-api-nodejs",
+  "name": "api-properties-airbnb-nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dateformat": "^3.0.3",
     "express": "^4.17.1",
     "mongoose": "^5.9.2"
   },
