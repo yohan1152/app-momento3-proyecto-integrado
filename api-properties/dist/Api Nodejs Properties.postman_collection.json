@@ -1,0 +1,716 @@
+{
+	"info": {
+		"_postman_id": "0de0939f-b1e3-411e-8d63-fecfeb1aff33",
+		"name": "Api Nodejs Properties",
+		"description": "API en Nodejs de citas medicas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listusers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listProperties",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/listproperties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listproperties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listPropertiesOrder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/getstoredproperties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getstoredproperties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listPropertiesUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/getpropertiesuser?authorid=5ef15a7664b863204cfcbbd4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getpropertiesuser"
+					],
+					"query": [
+						{
+							"key": "authorid",
+							"value": "5ef15a7664b863204cfcbbd4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listCategories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listcategories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listcategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Yohan",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Puerta",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "yohan1027@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/adduser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"adduser"
+					]
+				},
+				"description": "Añadir nuevas tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5ef8fd5e6072c6366c19017f",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Jenni",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Villa",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jenni1027@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/updateuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"updateuser"
+					]
+				},
+				"description": "Añadir nuevas tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "addProperty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Casa  en San Pedro",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Casa",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Cll 23 sur # 12 - 22",
+							"type": "text"
+						},
+						{
+							"key": "rooms",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "50000000",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "casa5.jpg",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "5ef8fd4d6072c6366c19017e"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/addproperty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"addproperty"
+					]
+				},
+				"description": "Añadir nuevas tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "updateProperty",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5ef160c364b863204cfcbbdd",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Casa en Laureles Gangazo",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Casa",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Cll 24 # 12 - 29",
+							"type": "text"
+						},
+						{
+							"key": "rooms",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "11000000",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "80",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "casa.jpg",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "5ef8fd4d6072c6366c19017e"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/updateproperty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"updateproperty"
+					]
+				},
+				"description": "Añadir nuevas tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "addCategory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name_category",
+							"value": "Casa",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/addcategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"addcategory"
+					]
+				},
+				"description": "Añadir nuevas tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "updateCategory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5ef8f8b5b8c4ad24f47fad9c",
+							"type": "text"
+						},
+						{
+							"key": "name_category",
+							"value": "Casa Finca",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/updatecategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"updatecategory"
+					]
+				},
+				"description": "Añadir nuevas tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProperty",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "8",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/deleteproperty?id=5ef15e3a64b863204cfcbbdc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"deleteproperty"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5ef15e3a64b863204cfcbbdc"
+						}
+					]
+				},
+				"description": "Eliminar tarea"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCategory",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "8",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/deletecategory?id=5ef7ff3e13912e1c94fda2a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"deletecategory"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5ef7ff3e13912e1c94fda2a6"
+						}
+					]
+				},
+				"description": "Eliminar tarea"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "8",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/deleteuser?id=5ef8f7afb8c4ad24f47fad9s",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"deleteuser"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5ef8f7afb8c4ad24f47fad9s"
+						}
+					]
+				},
+				"description": "Eliminar tarea"
+			},
+			"response": []
+		},
+		{
+			"name": "getIdUser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "jenni1027@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/getuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getuser"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Buscar tarea por ID"
+			},
+			"response": []
+		},
+		{
+			"name": "getUserExist",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "yohan1027@gmail.com",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/getuserexist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getuserexist"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Buscar tarea por ID"
+			},
+			"response": []
+		},
+		{
+			"name": "getIdProperty",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/getproperties?id=5ef15d3b64b863204cfcbbda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getproperties"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5ef15d3b64b863204cfcbbda"
+						}
+					]
+				},
+				"description": "Buscar tarea por ID"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "eedca65e-e696-40f0-8437-c8a66263afec",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "45a7030a-1fe9-48c9-92e5-5f839824a79f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

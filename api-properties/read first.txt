@@ -1,5 +1,6 @@
 Steps.
-1 - create database in mongo with name propertyairbnb and collection name category, properties and user
+1 - Install mongodb //create database in mongo with name propertyairbnb and collection name category, properties and user
 In node proyect run
 2 - npm install -> to install all dependencies
 3 - npm start -> run aplication
+4 - Use the file  "Api Nodejs Properties.postman_collection.json"  to import into Postman all the methods to consult the api
