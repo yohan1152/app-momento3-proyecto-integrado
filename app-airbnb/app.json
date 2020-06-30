@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "citapp",
+    "name": "AIRBnB",
     "slug": "citapp",
     "platforms": [
       "ios",
@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#121212"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

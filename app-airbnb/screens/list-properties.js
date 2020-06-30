@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
 import CardComponent from './card-component'
+import color from '../styles/colors';
 
 function ListProperties({ navigation }) {
     // const { userid } = params; //Id de inicio de sesion    
@@ -46,7 +47,10 @@ function ListProperties({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: color.Black,
+        color: color.White,
+        alignItems: 'center',
     },
     image: {
         width: 160,
@@ -54,19 +58,23 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     createAppointmentButton: {
-        backgroundColor: '#0288d1',
+        backgroundColor: color.AquaMarine,
         padding: 20,
         margin: 10,
         alignItems: 'center',
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        height: 40,
+        justifyContent:'center',
+        alignItems: 'center',
     },
     createAppointmentButtonText: {
-        color: 'white',
+        color: color.White,
         fontWeight: 'bold',
-        fontSize: 17
-    },
-    title: {
-        fontSize: 16,
-        color: '#000'
+        fontSize: 17,
+        textShadowColor: color.Black,
+        textShadowRadius: 1.5,
     },
 });
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import {Image} from 'react-native';
 import { Text, View, StyleSheet, Dimensions, Alert } from 'react-native';
 import { TouchableHighlight,  TextInput } from "react-native-gesture-handler";
+import color from '../styles/colors';
 
 function Login({ navigation }) {
   const [username, setUsername] = useState("");    
@@ -36,14 +38,14 @@ function Login({ navigation }) {
   return (
     <View style={styles.loginScreenContainer}>
       <View style={styles.loginFormView}>
-        <Text style={styles.logoText}>Air BnB</Text>
-        <TextInput placeholder="Username" placeholderColor="#c4c3cb" style={styles.loginTextInput} onChangeText={text => setUsername(text)}/>
-        <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.loginTextInput} secureTextEntry={true} onChangeText={text => setPassword(text)} />
-        <TouchableHighlight style={styles.loginButton} onPress={getUser}>
-          <Text style={styles.loginButtonText}>Sign in</Text>
+        <Image style={styles.image} source={require('../assets/icon.png')}></Image>
+        <TextInput placeholder="Username" style={styles.loginTextInput} onChangeText={text => setUsername(text)}/>
+        <TextInput placeholder="Password" style={styles.loginTextInput} secureTextEntry={true} onChangeText={text => setPassword(text)} />
+        <TouchableHighlight style={styles.buttom} onPress={getUser}>
+          <Text style={styles.buttomText}>Sign in</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.registerButton} onPress={()=>navigation.navigate('CreateUsers')}>
-          <Text style={styles.registerButtonText}>Sign up</Text>
+        <TouchableHighlight style={styles.buttom} onPress={()=>navigation.navigate('CreateUsers')}>
+          <Text style={styles.buttomText}>Sign up</Text>
         </TouchableHighlight>
       </View>
     </View>
@@ -51,57 +53,55 @@ function Login({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  containerView: {
-    flex: 1,
-  },
   loginScreenContainer: {
     flex: 1,
-  },
-  logoText: {
-    fontSize: 40,
-    fontWeight: "800",
-    marginTop: 150,
-    marginBottom: 30,
-    textAlign: 'center',
+    backgroundColor: color.Black,
+    alignItems: 'center',
   },
   loginFormView: {
-    flex: 1
+    marginTop: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    height: '60%',
+    backgroundColor: color.Gray,
+    borderRadius: 10,
+  },
+  image:{
+    height: 200,
+    width: 200,
   },
   loginTextInput: {
-    height: 43,
+    color: color.White,
+    borderColor: color.Black,
+    backgroundColor: color.Gray,
+    borderRadius: 10,
+    borderWidth: 2,
+    height: 40,
+    width: Dimensions.get('screen').width * 0.50,
     fontSize: 14,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#eaeaea',
-    backgroundColor: '#fafafa',
     padding: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    marginTop: 5,
-    marginBottom: 5,
-
+    margin: 5,
   },
-  loginButton: {
-    backgroundColor: '#3897f1',
+  buttom: {
+    backgroundColor: color.AquaMarine,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    margin: 4,
+    padding: 4,
+    width: Dimensions.get('screen').width * 0.30,
+    alignItems: 'center',
+    borderRadius: 10,
+    borderColor: color.Black,
+    borderWidth: 2,
+  },
+  buttomText: {
+    color: color.White,
+    textShadowColor: color.Black,
+    textShadowRadius: 2,
     fontSize: 16,
-    borderRadius: 5,
-    height: 45,
-    margin: 15,
-    padding: 10,
-    width: Dimensions.get('screen').width * 0.93,
-    alignItems: 'center'
   },
-  loginButtonText: {
-    color: 'white'
-  },
-  registerButton: {
-    fontSize: 20,    
-    alignItems: 'center'
-  },
-  registerButtonText: {
-    color: '#01579b'
-  }
-
 });
 
 export default Login;
