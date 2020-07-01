@@ -4,29 +4,34 @@ import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 import color from '../styles/colors';
 
 function UpdateProperties({ route, navigation }) {
-    const { itemId, itemDate, itemTitle, userid } = route.params;    
+    const { id, title, type, address, rooms, price, area, image } = route.params; 
     const [appointmentTitle, setAppointmentTitle] = useState(itemTitle);    
     const [appointmentDate, setAppointmentDate] = useState(itemDate);
     const UpdateProperties = async () => {
 
         try {
             const response = await fetch('http://localhost:3000/api/updateproperty', {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    id: itemId,
-                    title: appointmentTitle,
-                    date: appointmentDate,
-                    user: userid
+                    id: id,
+                    title: title,
+                    type: type,
+                    address: address,
+                    price: price,
+                    rooms: rooms,
+                    area: area,
+                    image: image,
+                    author: author
                 }),
             });
             const json = await response.json();
             Alert.alert("Appointment updated successfuly");
             navigation.navigate('ListAppointments',{
-                userid: userid
+                author: author
               });
         } catch (error) {
             Alert.alert("An error has ocurred: " + error);            

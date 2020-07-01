@@ -22,24 +22,25 @@ function CardComponentUser(props) {
             <Text style={styles.text}>Rooms: {rooms}</Text>
             <Text style={styles.text}>Price: {price}</Text>
             <Text style={styles.text}>Area: {area}</Text>
-            <Text style={styles.text}>Image: {image}</Text>
         
             <View style={styles.containerButtons}>
-                <TouchableHighlight style={styles.updateButton} onPress={() =>
-                    navigation.navigate('UpdateAppointment', {
+                <TouchableHighlight style={styles.buttom} onPress={() =>
+                    navigation.navigate('UpdateProperties', {
                         id: _id,
                         title: title,
                         type: type,
                         address: address,
+                        price: price,
                         rooms: rooms,
                         area: area,
                         image: image,
                         author: author
+                        
                     })}>
-                    <Text style={styles.updateButtonText}>Update</Text>
+                    <Text style={styles.buttonText}>Update</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.cancelButton} onPress={() => {
-                    navigation.navigate('CancelAppointment', {
+                <TouchableHighlight style={styles.buttom} onPress={() => {
+                    navigation.navigate('DeleteProperties', {
                         id: _id,
                         title: title,
                         type: type,
@@ -51,7 +52,7 @@ function CardComponentUser(props) {
                         
                     })
                 }}>
-                     <Text style={styles.cancelButtonText}>Cancel</Text> 
+                     <Text style={styles.buttonText}>Delete</Text> 
                  </TouchableHighlight> 
             </View>
         </View>
@@ -95,7 +96,6 @@ const styles = StyleSheet.create({
         paddingTop: 6,
         flex: 1,
         flexDirection: "row",   
-        // backgroundColor: 'yellow'
     },
     buttom: {
         backgroundColor: color.AquaMarine,
