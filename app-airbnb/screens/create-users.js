@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
+import color from '../styles/colors';
 
 function CreateUsers({ navigation }) {
     const [userName, setUserName] = useState("");
@@ -32,13 +33,15 @@ function CreateUsers({ navigation }) {
 
     return(
         <View style={styles.container}>
-            <TextInput style={styles.textInput} placeholder="Name" onChangeText={text => setUserName(text)} />
-            <TextInput style={styles.textInput} placeholder="Last Name" secureTextEntry={true} onChangeText={text => setUserLastName(text)} />
-            <TextInput style={styles.textInput} placeholder="Email" onChangeText={text => setUserEmail(text)} />
-            <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} onChangeText={text => setUserPassword(text)} />
-            <TouchableHighlight style={styles.createUserButton} onPress={createUser}>
-                <Text style={styles.textStyleButton}>Create User</Text>
-            </TouchableHighlight>
+            <View style={styles.containerForm} >
+                <TextInput style={styles.textInput} placeholder="Name" onChangeText={text => setUserName(text)} />
+                <TextInput style={styles.textInput} placeholder="Last Name" secureTextEntry={true} onChangeText={text => setUserLastName(text)} />
+                <TextInput style={styles.textInput} placeholder="Email" onChangeText={text => setUserEmail(text)} />
+                <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} onChangeText={text => setUserPassword(text)} />
+                <TouchableHighlight style={styles.createUserButton} onPress={createUser}>
+                    <Text style={styles.textStyleButton}>Create User</Text>
+                </TouchableHighlight>
+            </View>
         </View>
     );
 };
@@ -47,28 +50,49 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: color.Black,
+    },
+    containerForm:{
+        marginTop: 120,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.Gray,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        width: Dimensions.get('screen').width * 0.8,
+        height: '60%',
     },
     textInput: {
-        padding: 20,
-        borderColor: 'black',
-        borderRadius: 5,
-        borderWidth: 1,
+        padding: 10,
+        borderColor: color.Black,
+        backgroundColor: color.Gray,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
         marginTop: 10,
-        width: Dimensions.get('screen').width * 0.9
+        color: color.White,
+        width: Dimensions.get('screen').width * 0.6
     },
     createUserButton: {
         marginTop: 10,
         padding: 15,
-        backgroundColor: '#0288d1',
-        borderRadius: 5,
-        width: Dimensions.get('screen').width * 0.9,
+        backgroundColor: color.AquaMarine,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        height: 40,
+        width: Dimensions.get('screen').width * 0.4,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     textStyleButton: {
-        color: 'white',
+        color: color.White,
         fontWeight: 'bold',
-        fontSize: 17
+        fontSize: 17,
+        textShadowColor: color.Black,
+        textShadowRadius: 1.5,
     }
 });
 
