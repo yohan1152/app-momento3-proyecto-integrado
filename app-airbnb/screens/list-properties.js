@@ -6,7 +6,6 @@ import CardComponent from './card-component'
 
 function ListProperties({ navigation }) {
     // const { author } = route.params; //Id de inicio de sesion  
-    console.log('log author',author);
       
     const isFocused = useIsFocused();
     const [properties, setProperties] = useState([]);
@@ -26,19 +25,10 @@ function ListProperties({ navigation }) {
 
     return (
         <View style={styles.container}>
-          
-            {/* <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
-                navigation.navigate('Create Property', {
-                    author: author
-                })}>
-                {/* <Text style={styles.createAppointmentButtonText}>Create Property</Text> */}
-            {/* </TouchableHighlight> */} 
 
-            {/* <Image source={require('../assets/casa1.jpg')} ></Image> */}
-           
             <FlatList
                 data={properties}
-                renderItem={({ item }) => <CardComponent appointment={item} />}
+                renderItem={({ item }) => <CardComponent properties={item} />}
                 keyExtractor={item => item._id}
             />
         </View>
@@ -49,26 +39,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column'
-    },
-    image: {
-        width: 160,
-        height: 160,
-        borderWidth: 1,
-    },
-    createAppointmentButton: {
-        backgroundColor: '#0288d1',
-        padding: 20,
-        margin: 10,
-        alignItems: 'center',
-    },
-    createAppointmentButtonText: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 17
-    },
-    title: {
-        fontSize: 16,
-        color: '#000'
     },
 });
 

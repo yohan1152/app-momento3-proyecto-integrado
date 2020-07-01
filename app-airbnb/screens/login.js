@@ -5,7 +5,6 @@ import { TouchableHighlight,  TextInput } from "react-native-gesture-handler";
 function Login({ navigation }) {
   const [email, setEmail] = useState("");    
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState([]);
 
   const getUser = async () => {
 
@@ -22,10 +21,10 @@ function Login({ navigation }) {
             }),
         });
         let json = await response.json();  
-        console.log('json data', json.res.data[0]._id );
+        console.log('json name', json.res.data[0].name );
                 
         if(json.res.success){
-          navigation.navigate('ListProperties',{
+          navigation.navigate('ListPropertiesUser',{
             author: json.res.data[0]._id,
             name: json.res.data[0].name
           });

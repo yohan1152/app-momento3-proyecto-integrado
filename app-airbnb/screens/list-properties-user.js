@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
+import { TouchableHighlight, FlatList, ScrollView } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
-import CardComponent from './card-component'
+import { useNavigation } from '@react-navigation/native';
+import CardComponentUser from './card-component-user'
 
-function ListProperties({ route, navigation }) {
+function ListPropertiesUser({ route, navigation }) {
     const { author } = route.params; //Id de inicio de sesion  
-    console.log('log author',author);
+    const { name } = route.params;
       
     const isFocused = useIsFocused();
     const [properties, setProperties] = useState([]);
@@ -14,11 +15,10 @@ function ListProperties({ route, navigation }) {
     /* Data for the flatlist */
     const fetchProperties = async () => {
         // let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
-        let response = await fetch('http://localhost:3000/api/getpropertiesuser?'+author);
+        let response = await fetch('http://localhost:3000/api/getpropertiesuser?authorid='+author);
         let jsonResponse = await response.json();
         setProperties(jsonResponse.res.data);
         console.log('json response: ',jsonResponse.res.data);
-        
     }
     useEffect(() => {
         fetchProperties();
@@ -27,20 +27,23 @@ function ListProperties({ route, navigation }) {
     return (
         <View style={styles.container}>
           
+            <Text>{name}</Text>
+            
             <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
                 navigation.navigate('Create Property', {
                     author: author
                 })}>
                 <Text style={styles.createAppointmentButtonText}>Create Property</Text>
-            </TouchableHighlight>
+            </TouchableHighlight>         
+           <ScrollView>
 
-            {/* <Image source={require('../assets/casa1.jpg')} ></Image> */}
-           
             <FlatList
-                data={properties}
-                renderItem={({ item }) => <CardComponent appointment={item} />}
-                keyExtractor={item => item._id}
-            />
+                    data={properties}
+                    renderItem={({ item }) => <CardComponentUser properties={item} user={author}/>}
+                    keyExtractor={item => item._id}
+                />
+           </ScrollView>
+        
         </View>
     );
 };
@@ -73,4 +76,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ListProperties;
+export default ListPropertiesUser;

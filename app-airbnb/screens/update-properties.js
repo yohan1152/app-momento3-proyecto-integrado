@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
-function UpdateAppointment({ route, navigation }) {
+function UpdateProperties({ route, navigation }) {
     const { itemId, itemDate, itemTitle, userid } = route.params;    
     const [appointmentTitle, setAppointmentTitle] = useState(itemTitle);    
     const [appointmentDate, setAppointmentDate] = useState(itemDate);
-    const updateAppointment = async () => {
+    const UpdateProperties = async () => {
 
         try {
-            const response = await fetch('http://192.168.0.3:3000/api/updateAppointment', {
+            const response = await fetch('http://localhost:3000/api/updateproperty', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -37,7 +37,7 @@ function UpdateAppointment({ route, navigation }) {
         <View style={styles.container}>
             <TextInput style={styles.textInput} placeholder="appointment description" onChangeText={text => setAppointmentTitle(text)}>{itemTitle}</TextInput>
             <TextInput style={styles.textInput} placeholder="appointment date" onChangeText={text => setAppointmentDate(text)}>{itemDate}</TextInput>
-            <TouchableHighlight style={styles.createAppointmentButton} onPress={updateAppointment}>
+            <TouchableHighlight style={styles.createAppointmentButton} onPress={UpdateProperties}>
                 <Text style={styles.textStyleButton}>Update Appointment</Text>
             </TouchableHighlight>
         </View>
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
         fontSize: 16
     }
 });
-export default UpdateAppointment;	
+export default UpdateProperties;	

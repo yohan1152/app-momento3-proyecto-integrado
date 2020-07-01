@@ -1,58 +1,32 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
+import { TouchableHighlight, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 
 function CardComponent(props) {
     const navigation = useNavigation();
-    const { author, _id, title, type, address, rooms, price, area, image } = props.properties;
-    const routeAssets = '../assets/'
-    // console.log(routeAssets+image);
-    // const imageURI = Asset.fromModule(require('../assets/casa1.jpg')).uri;
+    const { _id, title, type, address, rooms, price, area, image } = props.properties;
+
     return (
-        
+
         <View style={styles.container}>
-
-            <Image style={styles.image} source={require('../assets/'+image)} />
-            <Text style={styles.appointmentText}>{title}</Text>
-            <Text style={styles.text}>Type: {type}</Text>
-            <Text style={styles.text}>Address: {address}</Text>
-            <Text style={styles.text}>Rooms: {rooms}</Text>
-            <Text style={styles.text}>Price: {price}</Text>
-            <Text style={styles.text}>Area: {area}</Text>
-            <Text style={styles.text}>ID: {_id}</Text>
-            <Text style={styles.text}>image: {image}</Text>
-        
-
-            {/* {/* <View style={styles.containerButtons}>
-                <TouchableHighlight style={styles.updateButton} onPress={() =>
-                    navigation.navigate('UpdateAppointment', {
-                        itemId: _id,
-                        itemTitle: title,
-                        itemType: type,
-                        itemAddress: address,
-                        itemRooms: rooms,
-                        itemArea:area,
-                        itemUserid: author
-                    })}>
-                    <Text style={styles.updateButtonText}>Update</Text>
+            <View>
+                <TouchableHighlight style={styles.button} onPress={() =>
+                    navigation.navigate('Login')}>
+                    <Text style={styles.buttom}>LOGIN</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.cancelButton} onPress={() => {
-                    navigation.navigate('CancelAppointment', {
-                        itemId: _id,
-                        itemTitle: title,
-                        itemType: type,
-                        itemAddress: address,
-                        itemRooms: rooms,
-                        itemArea:area,
-                        itemUserid: author
-                        
-                    })
-                }}> */}
-                    {/* <Text style={styles.cancelButtonText}>Cancel</Text> */}
-                {/* </TouchableHighlight> */}
-            {/* </View> */}
+            </View>
+            <View>
+                {/* <ScrollView> */}
+                <Image style={styles.image} source={require('../assets/'+image)} />
+                <Text style={styles.appointmentText}>{title}</Text>   
+                <Text>Price: {price}</Text>
+                {/* </ScrollView> */}
+
+            </View>
+            
+            
         </View>
     );
 };
@@ -68,51 +42,30 @@ const styles = StyleSheet.create({
         height: 160,
         borderWidth: 1,
     },
-    containerButtons: {
-        flex: 1,
-        flexDirection: "row",        
-        top: 10,
-        position: "absolute",
-        right: 10 
-    },
-    appointmentTitleText: {
-        fontWeight: 'bold',
-        fontSize: 19,
-        alignItems: 'center',
-        padding: 2,
-        margin: 2
-    },
+    
     appointmentText: {        
         fontSize: 18,
         alignItems: 'center',
         padding: 2,
         margin: 2
     },
-    updateButton: {
-        backgroundColor: '#03a9f4',
+    buttom: {
+        // backgroundColor: color.AquaMarine,
         padding: 1,
         margin: 1,
+        height: 30,
+        width: Dimensions.get('screen').width * 0.14,
+        marginLeft: 8,
+        borderRadius: 10,
+        // borderColor: color.Black
+        borderWidth: 2,
         alignItems: 'center',
-        width: Dimensions.get('screen').width * 0.1
+        justifyContent: 'center'
     },
-    updateButtonText: {
-        backgroundColor: '#03a9f4',
-        padding: 1,
-        margin: 1,
-        alignItems: 'center',
-        width: Dimensions.get('screen').width * 0.4
-
-    },
-    cancelButton: {
-        backgroundColor: '#03a9f4',
-        padding: 1,
-        margin: 1,
-        alignItems: 'center',
-        width: Dimensions.get('screen').width * 0.1
-        
-    },
-    cancelButtonText: {
-        color: 'white'
+    buttonText: {
+        // color: color.White,
+        // textShadowColor: color.Black,
+        textShadowRadius: 2,
     }
 
 });
