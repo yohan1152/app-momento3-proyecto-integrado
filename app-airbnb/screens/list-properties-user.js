@@ -80,18 +80,6 @@ function ListPropertiesUser({ route,navigation }) {
         fetchAppointments();
     }, [isFocused]);
 
-    // const renderItem = ({item}) => {
-    //     /*los tres puntos (...) se conocen como el operador propagador y
-    //     sirven para pasar las propiedades del item, en este caso: nombre y key */
-    
-    //     return (
-    //       <CardComponentUser
-    //         {...item}
-    //         user={author}
-    //         properties={item}
-    //       />
-    //     );
-    //   };
 
     return (
         <View style={styles.container}>
@@ -110,7 +98,7 @@ function ListPropertiesUser({ route,navigation }) {
             </View>  
             <FlatList
                 data={properties}
-                renderItem={({ item }) => <CardComponentUser properties={item} />}
+                renderItem={({ item }) => <CardComponentUser properties={item} user={{"author": author}} />}
                 keyExtractor={item => item._id}
             />
         </View>

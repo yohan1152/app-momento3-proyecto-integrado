@@ -25,7 +25,7 @@ function Login({ navigation }) {
       });
       let json = await response.json();  
       if(json.res.success){
-        navigation.navigate('ListPropertiesUser', 'Update',{
+        navigation.navigate('ListPropertiesUser',{
           author: json.res.data[0]._id,
           name: json.res.data[0].name
         });

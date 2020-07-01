@@ -10,7 +10,7 @@ function CreateUsers({ navigation }) {
     const [userPassword, setUserPassword] = useState("");
     const createUser = async () => {
         try {
-            const response = await fetch('http://192.168.0.3:3000/api/adduser', {
+            const response = await fetch('http://localhost:3000/api/adduser', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -25,7 +25,10 @@ function CreateUsers({ navigation }) {
             });
             const json = await response.json();
             Alert.alert("User created successfuly");
-            navigation.navigate('Sing-up');
+            navigation.navigate('Login',{
+                email: userEmail,
+                password: userPassword
+            });
         } catch (error) {
             Alert.alert("An error has ocurred: " + error);            
         }
@@ -35,7 +38,7 @@ function CreateUsers({ navigation }) {
         <View style={styles.container}>
             <View style={styles.containerForm} >
                 <TextInput style={styles.textInput} placeholder="Name" onChangeText={text => setUserName(text)} />
-                <TextInput style={styles.textInput} placeholder="Last Name" secureTextEntry={true} onChangeText={text => setUserLastName(text)} />
+                <TextInput style={styles.textInput} placeholder="Last Name" onChangeText={text => setUserLastName(text)} />
                 <TextInput style={styles.textInput} placeholder="Email" onChangeText={text => setUserEmail(text)} />
                 <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} onChangeText={text => setUserPassword(text)} />
                 <TouchableHighlight style={styles.createUserButton} onPress={createUser}>

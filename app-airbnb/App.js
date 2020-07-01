@@ -1,5 +1,4 @@
 import React from 'react';
-import {image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/login';
@@ -7,7 +6,7 @@ import ListProperties from './screens/list-properties';
 import ListPropertiesUser from './screens/list-properties-user';
 import CreateProperties from './screens/create-properties';
 import UpdateProperties from './screens/update-properties';
-import CancelProperties from './screens/cancel-appointment';
+import DeleteProperties from './screens/delete-properties';
 import CreateUsers from './screens/create-users';
 import color from './styles/colors';
 
@@ -28,7 +27,7 @@ function App() {
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />
         <Stack.Screen name="CreateProperties" component={CreateProperties} options={{ title: 'AIR BnB - Create properties', headerStyle:{backgroundColor: '#272727'}, 
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  />
-        <Stack.Screen name="CancelProperties" component={CancelProperties} options={{ title: 'AIR BnB - Delete', headerStyle:{backgroundColor: '#272727'}, 
+        <Stack.Screen name="DeleteProperties" component={DeleteProperties} options={{ title: 'AIR BnB - Delete', headerStyle:{backgroundColor: '#272727'}, 
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />
         <Stack.Screen name="CreateUsers" component={CreateUsers} options={{ title: 'AIR BnB - Create user', headerStyle:{backgroundColor: '#272727'}, 
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />

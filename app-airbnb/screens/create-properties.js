@@ -19,11 +19,11 @@ function validate(title, type, address, rooms, price, area) {
     // if (author.length < 1) { error = error + "author, " }
 
     if (error.length > 0) {
-        Alert.alert("Form failed","The following items require your attention: " + error);
+        Alert.alert("Form failed", "The following items require your attention: " + error);
         return false;
     } else {
         if (error_type.length < 1) {
-            Alert.alert("Form failed","The following items require your attention: " + error_type);
+            Alert.alert("Form failed", "The following items require your attention: " + error_type);
             return true;
         } else {
             return false;
@@ -32,17 +32,18 @@ function validate(title, type, address, rooms, price, area) {
 }
 
 function CreateProperties({ route, navigation }) {
-    const { author } = route.params; 
+    const { author } = route.params;
     // const { author } = '5ef8fd4d6072c6366c19017e'; //quemado
-    const [title, setTitle] = useState("");
+    const images = [propertyImg1, propertyImg2, propertyImg3, propertyImg4, propertyImg5, propertyImg6, propertyImg7, propertyImg8, propertyImg9, propertyImg10];
+    const randomNumber = Math.floor(Math.random() * images.length);
+
     const [type, setType] = useState("");
     const [address, setAddress] = useState("");
     const [rooms, setRooms] = useState("");
     const [price, setPrice] = useState("");
     const [area, setArea] = useState("");
-    const [image, setImage] = useState("");
-    // const [author, setAuthor] = useState("");
-    
+    // const [image, setImage] = useState("");
+
     const createProperties = async () => {
         if (validate(title, type, address, rooms, price, area, image)) {
             try {
@@ -59,7 +60,7 @@ function CreateProperties({ route, navigation }) {
                         rooms: rooms,
                         price: price,
                         area: area,
-                        image: image,
+                        image: propertyImg[randomNumber],
                         author: author,
                     }),
                 });
@@ -83,7 +84,7 @@ function CreateProperties({ route, navigation }) {
                 <TextInput style={styles.textInput} placeholder="Number of Rooms" onChangeText={text => setRooms(text)} />
                 <TextInput style={styles.textInput} placeholder="Price" onChangeText={text => setPrice(text)} />
                 <TextInput style={styles.textInput} placeholder="Area" onChangeText={text => setArea(text)} />
-                {/* <TextInput style={styles.textInput} placeholder="Image" onChangeText={text => setImage(text)} /> */}
+
                 <TouchableHighlight style={styles.createPropertyButton} onPress={createProperties}>
                     <Text style={styles.textStyleButton}>Create Property</Text>
                 </TouchableHighlight>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: color.Black,
     },
-    containerForm:{
+    containerForm: {
         marginTop: 120,
         justifyContent: 'center',
         alignItems: 'center',

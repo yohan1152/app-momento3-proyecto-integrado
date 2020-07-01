@@ -5,10 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 import color from '../styles/colors';
 
 function CardComponentUser(props) {
-    // const {author} = props.user;
-    // console.log('author card',author);
-    
     const navigation = useNavigation();
+
+    const {author} = props.user;
+    console.log('author card',author);
     const { _id, title, type, address, rooms, price, area, image } = props.properties;
 
     return (
@@ -24,31 +24,20 @@ function CardComponentUser(props) {
             <Text style={styles.text}>Area: {area}</Text>
         
             <View style={styles.containerButtons}>
-                <TouchableHighlight style={styles.buttom} onPress={() =>
-                    navigation.navigate('UpdateProperties', {
+                
+            <TouchableHighlight style={styles.buttom} onPress={() => {
+                    navigation.navigate('DeleteProperties', {
                         id: _id,
-                        title: title,
-                        type: type,
-                        address: address,
-                        price: price,
-                        rooms: rooms,
-                        area: area,
-                        image: image
-                        
-                    })}>
-                    <Text style={styles.buttonText}>Update</Text>
-                </TouchableHighlight>
+                        author: author  
+                    })
+                }}>
+                     <Text style={styles.buttonText}>Delete</Text> 
+                 </TouchableHighlight> 
+                
                 <TouchableHighlight style={styles.buttom} onPress={() => {
                     navigation.navigate('DeleteProperties', {
                         id: _id,
-                        title: title,
-                        type: type,
-                        address: address,
-                        rooms: rooms,
-                        area: area,
-                        image: image,
-                        author: author
-                        
+                        author: author  
                     })
                 }}>
                      <Text style={styles.buttonText}>Delete</Text> 

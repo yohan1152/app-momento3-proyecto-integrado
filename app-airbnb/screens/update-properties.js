@@ -4,56 +4,57 @@ import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 import color from '../styles/colors';
 
 function UpdateProperties({ route, navigation }) {
+
     const { id, title, type, address, rooms, price, area, image, author } = route.params; 
     console.log('params',title, author);
     
     const [propertyTitle, setTitle] = useState('');    
-    // const [propertyType, setType] = useState(type);
-    // const [propertyAddress, setAddress] = useState(address);    
-    // const [propertyRooms, setRooms] = useState(rooms);
-    // const [propertyPrice, setPrice] = useState(price); 
-    // const [propertyArea, setArea] = useState(area);
+    const [propertyType, setType] = useState(type);
+    const [propertyAddress, setAddress] = useState(address);    
+    const [propertyRooms, setRooms] = useState(rooms);
+    const [propertyPrice, setPrice] = useState(price); 
+    const [propertyArea, setArea] = useState(area);
 
     const putFetch = async () => {
 
-        // try {
-        //     const response = await fetch('http://localhost:3000/api/updateproperty', {
-        //         method: 'PUT',
-        //         headers: {
-        //             Accept: 'application/json',
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({
-        //             id: id,
-        //             title: propertyTitle,
-        //             type: propertyType,
-        //             address: propertyAddress,
-        //             price: propertyPrice,
-        //             rooms: propertyRooms,
-        //             area: propertyArea,
-        //             image: image,
-        //             author: author
-        //         }),
-        //     });
-        //     const json = await response.json();
-        //     Alert.alert("Appointment updated successfuly");
-        //     navigation.navigate('ListAppointmentsUsers',{
-        //         author: author
-        //       });
-        // } catch (error) {
-        //     Alert.alert("An error has ocurred: " + error);            
-        // }
+        try {
+            const response = await fetch('http://localhost:3000/api/updateproperty', {
+                method: 'PUT',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: id,
+                    title: propertyTitle,
+                    type: propertyType,
+                    address: propertyAddress,
+                    price: propertyPrice,
+                    rooms: propertyRooms,
+                    area: propertyArea,
+                    image: image,
+                    author: author
+                }),
+            });
+            const json = await response.json();
+            Alert.alert("Appointment updated successfuly");
+            navigation.navigate('ListAppointmentsUsers',{
+                author: author
+              });
+        } catch (error) {
+            Alert.alert("An error has ocurred: " + error);            
+        }
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.containerForm} >
                 <TextInput style={styles.textInput} placeholder="title" onChangeText={text => setTitle(text)}>{title}</TextInput>
-                {/* <TextInput style={styles.textInput} placeholder="type" onChangeText={text => setType(text)}>{type}</TextInput>
+                <TextInput style={styles.textInput} placeholder="type" onChangeText={text => setType(text)}>{type}</TextInput>
                 <TextInput style={styles.textInput} placeholder="address" onChangeText={text => setAddress(text)}>{address}</TextInput>
                 <TextInput style={styles.textInput} placeholder="price" onChangeText={text => setPrice(text)}>{price}</TextInput>
                 <TextInput style={styles.textInput} placeholder="rooms" onChangeText={text => setRooms(text)}>{rooms}</TextInput>
-                <TextInput style={styles.textInput} placeholder="area" onChangeText={text => setArea(text)}>{area}</TextInput> */}
+                <TextInput style={styles.textInput} placeholder="area" onChangeText={text => setArea(text)}>{area}</TextInput>
                 <TouchableHighlight style={styles.createAppointmentButton} onPress={putFetch}>
                     <Text style={styles.textStyleButton}>Update</Text>
                 </TouchableHighlight>
