@@ -86,7 +86,7 @@ function ListPropertiesUser({ route,navigation }) {
             <View style={styles.containerBanner}>
                 <Text style={styles.textBanner}>{name}</Text>
                 <TouchableHighlight style={styles.createPropertyButton} onPress={() =>
-                    navigation.navigate('Create Property', {
+                    navigation.navigate('CreateProperties', {
                         author: author
                     })}>
                     <Text style={styles.createPropertyButtonText}>Create</Text>

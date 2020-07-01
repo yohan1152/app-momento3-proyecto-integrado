@@ -15,7 +15,7 @@ function CardComponentUser(props) {
         
         <View style={styles.container}>
 
-            <Image style={styles.image} source={require('../assets/'+image)} />
+            <Image style={styles.image} source={require('../assets/images/'+image)} />
             <Text style={styles.appointmentText}>{title}</Text>
             <Text style={styles.text}>Type: {type}</Text>
             <Text style={styles.text}>Address: {address}</Text>
@@ -26,9 +26,9 @@ function CardComponentUser(props) {
             <View style={styles.containerButtons}>
                 
             <TouchableHighlight style={styles.buttom} onPress={() => {
-                    navigation.navigate('DeleteProperties', {
+                    navigation.navigate('UpdateProperties', {
                         id: _id,
-                        author: author  
+                        title: title
                     })
                 }}>
                      <Text style={styles.buttonText}>Delete</Text> 

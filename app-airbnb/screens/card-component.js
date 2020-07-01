@@ -10,7 +10,7 @@ function CardComponent(props) {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.image} source={require('../assets/'+image)} />
+            <Image style={styles.image} source={require('../assets/images/'+image)} />
             <Text style={styles.appointmentText}>{title}</Text>   
             <Text style={styles.text}>Price:  $ {price}</Text>
         </View>  

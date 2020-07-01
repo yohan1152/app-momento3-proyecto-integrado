@@ -6,7 +6,8 @@ import color from '../styles/colors';
 function UpdateProperties({ route, navigation }) {
 
     const { id, title, type, address, rooms, price, area, image, author } = route.params; 
-    console.log('params',title, author);
+    console.log('params',id);
+    console.log('params',title);
     
     const [propertyTitle, setTitle] = useState('');    
     const [propertyType, setType] = useState(type);
@@ -18,7 +19,7 @@ function UpdateProperties({ route, navigation }) {
     const putFetch = async () => {
 
         try {
-            const response = await fetch('http://localhost:3000/api/updateproperty', {
+            const response = await fetch('http://localhost:3000/api/updateproperty'+id, {
                 method: 'PUT',
                 headers: {
                     Accept: 'application/json',
@@ -37,12 +38,21 @@ function UpdateProperties({ route, navigation }) {
                 }),
             });
             const json = await response.json();
-            Alert.alert("Appointment updated successfuly");
-            navigation.navigate('ListAppointmentsUsers',{
+            if (json.res.success) {
+                Alert.alert("Appointment updated successfuly");
+                navigation.navigate('ListAppointmentsUsers',{
                 author: author
               });
+              console.log('Envio satisfactorio');
+              
+            } else {
+                Alert.alert("An error has ocurred: " + error);
+                console.log('error de envio');
+            }
+            
+            
         } catch (error) {
-            Alert.alert("An error has ocurred: " + error);            
+            
         }
     }
 

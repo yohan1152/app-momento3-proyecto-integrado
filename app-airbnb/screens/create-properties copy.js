@@ -12,6 +12,7 @@ function validate(title, type, address, rooms, price, area) {
     if (isNaN(type)) { error_type = error_type + "type is not a number " }
     if (address.length < 1) { error = error + "address, " }
     if (rooms.length < 1) { error = error + "rooms, " }
+    if (isNaN(price)) { error_type = error_type + "price is not a number " }
     if (price.length < 1) { error = error + "price, " }
     if (area.length < 1) { error = error + "area, " }
     // if (image.length < 1) { error = error + "image, " }
@@ -32,22 +33,20 @@ function validate(title, type, address, rooms, price, area) {
 
 function CreateProperties({ route, navigation }) {
     const { author } = route.params;
-    
+    // const { author } = '5ef8fd4d6072c6366c19017e'; //quemado
     const images = ['001.jpg','002.jpg','003.jpg','004.jpg','005.jpg','006.jpg','007.jpg','008.jpg','009.jpg','010.jpg'];
     const randomNumber = Math.floor(Math.random() * images.length);
-    
-    const [title, setTitle] = useState("");
+
     const [type, setType] = useState("");
     const [address, setAddress] = useState("");
     const [rooms, setRooms] = useState("");
     const [price, setPrice] = useState("");
     const [area, setArea] = useState("");
     // const [image, setImage] = useState("");
-console.log(images[randomNumber]);
 
     const createProperties = async () => {
-        // if (validate(title, type, address, rooms, price, area)) {
-            // try {
+        if (validate(title, type, address, rooms, price, area, image)) {
+            try {
                 const response = await fetch('http://localhost:3000/api/addproperty', {
                     method: 'POST',
                     headers: {
@@ -56,7 +55,7 @@ console.log(images[randomNumber]);
                     },
                     body: JSON.stringify({
                         title: title,
-                        type: type,
+                        date: type,
                         address: address,
                         rooms: rooms,
                         price: price,
@@ -66,23 +65,15 @@ console.log(images[randomNumber]);
                     }),
                 });
                 const json = await response.json();
-                if (json.res.success) {
-                    Alert.alert("Property created successfuly");
-                navigation.navigate('ListPropertiesUser', {
+                Alert.alert("Property created successfuly");
+                navigation.navigate('ListProperties', {
                     author: author
                 });
-                console.log('Envio satisfactorio');
-                } else {
-                    Alert.alert("An error has ocurred");
-                    console.log('error de envio');
-                }
-                
-                
-            // } catch (error) {
-                // Alert.alert("An error has ocurred: " + error);
+            } catch (error) {
+                Alert.alert("An error has ocurred: " + error);
             }
-        // }
-    
+        }
+    }
 
     return (
         <View style={styles.container}>
