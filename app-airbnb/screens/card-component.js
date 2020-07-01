@@ -9,28 +9,14 @@ function CardComponent(props) {
     const { _id, title, type, address, rooms, price, area, image } = props.properties;
 
     return (
-
         <View style={styles.container}>
-            <View style={styles.containerImage}>
-                <TouchableHighlight style={styles.button} onPress={() =>
-                    navigation.navigate('Login')}>
-                    <Text style={styles.buttom}>LOGIN</Text>
-                </TouchableHighlight>
-            </View>
-            <View>
-                {/* <ScrollView> */}
-                <Image style={styles.image} source={require('../assets/'+image)} />
-                <Text style={styles.appointmentText}>{title}</Text>   
-                <Text>Price: {price}</Text>
-                {/* </ScrollView> */}
-
-            </View>
-        </View>
-            
+            <Image style={styles.image} source={require('../assets/'+image)} />
+            <Text style={styles.appointmentText}>{title}</Text>   
+            <Text style={styles.text}>Price:  $ {price}</Text>
+        </View>  
     );
 };
 
-        
 const styles = StyleSheet.create({
 
     container: {
@@ -65,31 +51,6 @@ const styles = StyleSheet.create({
     text:{
         color: color.White,
     },
-    containerButtons: {
-        paddingTop: 6,
-        flex: 1,
-        flexDirection: "row",   
-        // backgroundColor: 'yellow'
-    },
-    buttom: {
-        backgroundColor: color.AquaMarine,
-        padding: 1,
-        margin: 1,
-        height: 30,
-        width: Dimensions.get('screen').width * 0.18,
-        marginLeft: 8,
-        borderRadius: 10,
-        borderColor: color.Black,
-        borderWidth: 2,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonText: {
-        color: color.White,
-        textShadowColor: color.Black,
-        textShadowRadius: 2,
-    }
-
 });
 
 export default CardComponent;
