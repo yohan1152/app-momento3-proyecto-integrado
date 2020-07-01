@@ -38,14 +38,19 @@ function UpdateProperties({ route, navigation }) {
         }
     }
 
-
     return (
         <View style={styles.container}>
-            <TextInput style={styles.textInput} placeholder="appointment description" onChangeText={text => setAppointmentTitle(text)}>{itemTitle}</TextInput>
-            <TextInput style={styles.textInput} placeholder="appointment date" onChangeText={text => setAppointmentDate(text)}>{itemDate}</TextInput>
-            <TouchableHighlight style={styles.createAppointmentButton} onPress={UpdateProperties}>
-                <Text style={styles.textStyleButton}>Update Appointment</Text>
-            </TouchableHighlight>
+            <View style={styles.containerForm} >
+                <TextInput style={styles.textInput} placeholder="title" onChangeText={text => setAppointmentDate(text)}>{}</TextInput>
+                <TextInput style={styles.textInput} placeholder="type" onChangeText={text => setAppointmentDate(text)}>{}</TextInput>
+                <TextInput style={styles.textInput} placeholder="address" onChangeText={text => setAppointmentDate(text)}>{}</TextInput>
+                <TextInput style={styles.textInput} placeholder="price" onChangeText={text => setAppointmentDate(text)}>{}</TextInput>
+                <TextInput style={styles.textInput} placeholder="rooms" onChangeText={text => setAppointmentDate(text)}>{}</TextInput>
+                <TextInput style={styles.textInput} placeholder="area" onChangeText={text => setAppointmentDate(text)}>{}</TextInput>
+                <TouchableHighlight style={styles.createAppointmentButton} onPress={UpdateProperties}>
+                    <Text style={styles.textStyleButton}>Update</Text>
+                </TouchableHighlight>
+            </View>
         </View>
     );
 };
@@ -55,27 +60,48 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 50
+        backgroundColor: color.Black,
+    },
+    containerForm:{
+        marginTop: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.Gray,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        width: Dimensions.get('screen').width * 0.8,
+        height: '70%',
     },
     textInput: {
-        padding: 20,
-        borderColor: 'black',
-        borderRadius: 5,
-        borderWidth: 1,
+        padding: 10,
+        borderColor: color.Black,
+        backgroundColor: color.Gray,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
         marginTop: 10,
-        width: Dimensions.get('screen').width * 0.9
+        color: color.White,
+        width: Dimensions.get('screen').width * 0.6
     },
     createAppointmentButton: {
         marginTop: 10,
         padding: 15,
-        backgroundColor: '#0288d1',
-        borderRadius: 5,
-        width: Dimensions.get('screen').width * 0.9,
+        backgroundColor: color.AquaMarine,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        height: 40,
+        width: Dimensions.get('screen').width * 0.30,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     textStyleButton: {
-        color: 'white',
-        fontSize: 16
+        color: color.White,
+        fontWeight: 'bold',
+        fontSize: 17,
+        textShadowColor: color.Black,
+        textShadowRadius: 1.5,
     }
 });
 export default UpdateProperties;	
