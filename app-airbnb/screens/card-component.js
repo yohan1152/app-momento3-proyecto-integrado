@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
 import { TouchableHighlight, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { Asset } from 'expo-asset';
 import color from '../styles/colors';
 
 function CardComponent(props) {

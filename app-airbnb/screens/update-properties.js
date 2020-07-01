@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
+import color from '../styles/colors';
 
 function UpdateProperties({ route, navigation }) {
     const { itemId, itemDate, itemTitle, userid } = route.params;    

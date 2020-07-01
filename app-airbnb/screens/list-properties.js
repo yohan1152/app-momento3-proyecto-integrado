@@ -6,17 +6,14 @@ import CardComponent from './card-component'
 import color from '../styles/colors';
 
 function ListProperties({ navigation }) {
-    const { author } = route.params; //Id de inicio de sesion  
-    const { name } = route.params
+    
     const isFocused = useIsFocused();
-    const [appointments, setAppointments] = useState([]);
+    const [properties, setProperties] = useState([]);
 
-    /* Data for the flatlist */
     const fetchAppointments = async () => {
-        //let response = await fetch('http://192.168.0.3:80/citapp_api_php/api/listappointments');
-        let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
+        let response = await fetch('http://localhost:3000/api/listproperties');
         let jsonResponse = await response.json();
-        setAppointments(jsonResponse.res.data);
+        setProperties(jsonResponse.res.data);
         console.log('json response: ',jsonResponse.res.data);
         
     }
@@ -25,15 +22,7 @@ function ListProperties({ navigation }) {
     }, [isFocused]);
 
     return (
-        <View style={styles.container}>
-          <Text>{name}</Text>
-            <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
-                navigation.navigate('Create Property', {
-                    author: author
-                })}>
-                <Text style={styles.createAppointmentButtonText}>Create Property</Text>
-            </TouchableHighlight>
-
+        <View style={styles.container}>           
             <FlatList
                 data={properties}
                 renderItem={({ item }) => <CardComponent properties={item} />}
