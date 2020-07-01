@@ -5,46 +5,47 @@ import { TouchableHighlight,  TextInput } from "react-native-gesture-handler";
 import color from '../styles/colors';
 
 function Login({ navigation }) {
-  const [username, setUsername] = useState("");    
+
+  const [email, setEmail] = useState("");    
   const [password, setPassword] = useState("");
-  const getUser = async () => {
-    
-    try {
-        const url = "http://192.168.0.3:3000/api/validateuser"
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            }),
+
+  const getUser = async () => {  
+
+      const url = "http://localhost:3000/api/getuser"
+      const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              email: email,
+              password: password
+          }),
+      });
+      let json = await response.json();  
+      console.log('el name',json.res.data[0].name);
+              
+      if(json.res.success){
+        navigation.navigate('ListPropertiesUser',{
+          author: json.res.data[0]._id,
+          name: json.res.data[0].name
         });
-        const json = await response.json();        
-        if(json.user){
-          navigation.navigate('ListProperties',{
-            userid: json.user._id
-          });
-        }else{
-          Alert.alert("Authentication Error",json.response);
-        }
-    } catch (error) {
-        Alert.alert("An error has ocurred: " + error);            
+      }else{
+        Alert.alert("Authentication Error",json.response);
+      }
     }
-}
   
   return (
     <View style={styles.loginScreenContainer}>
       <View style={styles.loginFormView}>
         <Image style={styles.image} source={require('../assets/icon.png')}></Image>
-        <TextInput placeholder="Username" style={styles.loginTextInput} onChangeText={text => setUsername(text)}/>
+        <TextInput placeholder="Email" style={styles.loginTextInput} onChangeText={text => setEmail(text)}/>
         <TextInput placeholder="Password" style={styles.loginTextInput} secureTextEntry={true} onChangeText={text => setPassword(text)} />
         <TouchableHighlight style={styles.buttom} onPress={getUser}>
           <Text style={styles.buttomText}>Sign in</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.buttom} onPress={()=>navigation.navigate('CreateUsers')}>
+        <TouchableHighlight style={styles.buttom} onPress={()=>navigation.navigate('ListPropertiesUser')}>
           <Text style={styles.buttomText}>Sign up</Text>
         </TouchableHighlight>
       </View>

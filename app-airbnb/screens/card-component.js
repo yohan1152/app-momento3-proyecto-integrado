@@ -1,64 +1,38 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Dimensions, Image, Button } from 'react-native';
+import { TouchableHighlight, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { Asset } from 'expo-asset';
 import color from '../styles/colors';
 
 function CardComponent(props) {
     const navigation = useNavigation();
-    const { userid, _id, title, type, address, rooms, price, area, image } = props.appointment;
-    const routeAssets = '../assets/'
-    // console.log(routeAssets+image);
-    // const imageURI = Asset.fromModule(require('../assets/casa1.jpg')).uri;
+    const { _id, title, type, address, rooms, price, area, image } = props.properties;
+
     return (
-        
+
         <View style={styles.container}>
             <View style={styles.containerImage}>
-                <Image style={styles.image} source={require('../assets/'+image)} />
-                <Text style={styles.appointmentText}>{title}</Text>
-                {/* <Text style={styles.text}>Type: {type}</Text> */}
-                {/* <Text style={styles.text}>Address: {address}</Text>
-                <Text style={styles.text}>Rooms: {rooms}</Text> */}
-                <Text style={styles.text}>Price: $ {price}</Text>
-                {/* <Text style={styles.text}>Area: {area}</Text>
-                <Text style={styles.text}>ID: {_id}</Text> */}
-                {/* <Text style={styles.text}>image: {image}</Text> */}
-                <Image source={require('../assets/casa.jpg')}></Image>
+                <TouchableHighlight style={styles.button} onPress={() =>
+                    navigation.navigate('Login')}>
+                    <Text style={styles.buttom}>LOGIN</Text>
+                </TouchableHighlight>
             </View>
-            <View style={styles.containerButtons}>
-                <TouchableHighlight style={styles.buttom} onPress={() =>
-                    navigation.navigate('UpdateAppointment', {
-                        itemId: _id,
-                        itemTitle: title,
-                        itemType: type,
-                        itemAddress: address,
-                        itemRooms: rooms,
-                        itemArea:area,
-                        itemUserid: userid
-                    })}>
-                    <Text style={styles.buttonText}>Update</Text>
-                </TouchableHighlight>
-                <TouchableHighlight style={styles.buttom} onPress={() => {
-                    navigation.navigate('CancelAppointment', {
-                        itemId: _id,
-                        itemTitle: title,
-                        itemType: type,
-                        itemAddress: address,
-                        itemRooms: rooms,
-                        itemArea:area,
-                        itemUserid: userid
-                        
-                    })
-                }}>
-                    <Text style={styles.buttonText}>Delete</Text>
-                </TouchableHighlight>
+            <View>
+                {/* <ScrollView> */}
+                <Image style={styles.image} source={require('../assets/'+image)} />
+                <Text style={styles.appointmentText}>{title}</Text>   
+                <Text>Price: {price}</Text>
+                {/* </ScrollView> */}
+
             </View>
         </View>
+            
     );
 };
 
+        
 const styles = StyleSheet.create({
+
     container: {
         flex: 1,
         margin: 10,

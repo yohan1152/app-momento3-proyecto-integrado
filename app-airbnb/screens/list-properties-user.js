@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
-import CardComponent from './card-component'
+import CardComponentUser from './card-component-user'
 import color from '../styles/colors';
 
-function ListProperties({ navigation }) {
-    
+function ListPropertiesUser({ route,navigation }) {
+    const { author } = route.params; //Id de inicio de sesion  
+    const { name } = route.params
     const isFocused = useIsFocused();
     const [properties, setProperties] = useState([]);
 
+    /* Data for the flatlist */
     const fetchAppointments = async () => {
-        let response = await fetch('http://localhost:3000/api/listproperties');
+        let response = await fetch('http://localhost:3000/api/getpropertiesuser?authorid='+author);
         let jsonResponse = await response.json();
         setProperties(jsonResponse.res.data);
         console.log('json response: ',jsonResponse.res.data);
@@ -22,10 +24,18 @@ function ListProperties({ navigation }) {
     }, [isFocused]);
 
     return (
-        <View style={styles.container}>           
+        <View style={styles.container}>
+          <Text>{name}</Text>
+            <TouchableHighlight style={styles.createPropertyButton} onPress={() =>
+                navigation.navigate('Create Property', {
+                    author: author
+                })}>
+                <Text style={styles.createPropertyButtonText}>Create Property</Text>
+            </TouchableHighlight>
+
             <FlatList
                 data={properties}
-                renderItem={({ item }) => <CardComponent properties={item} />}
+                renderItem={({ item }) => <CardComponentUser properties={item} user={author} />}
                 keyExtractor={item => item._id}
             />
         </View>
@@ -45,7 +55,7 @@ const styles = StyleSheet.create({
         height: 160,
         borderWidth: 1,
     },
-    createAppointmentButton: {
+    createPropertyButton: {
         backgroundColor: color.AquaMarine,
         padding: 20,
         margin: 10,
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems: 'center',
     },
-    createAppointmentButtonText: {
+    createPropertyButtonText: {
         color: color.White,
         fontWeight: 'bold',
         fontSize: 17,
@@ -67,4 +77,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ListProperties;
+export default ListPropertiesUser;
