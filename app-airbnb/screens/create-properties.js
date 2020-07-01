@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
+import color from '../styles/colors';
 
 function validate(title, type, address, rooms, price, area) {
     var error = "";
@@ -30,7 +31,7 @@ function validate(title, type, address, rooms, price, area) {
     }
 }
 
-function CreateProperties({ navigation }) {
+function CreateProperties({ route, navigation }) {
     // const { author } = route.params; 
     const { author } = '5ef8fd4d6072c6366c19017e'; //quemado
     const [title, setTitle] = useState("");
@@ -45,7 +46,7 @@ function CreateProperties({ navigation }) {
     const createProperties = async () => {
         if (validate(title, type, address, rooms, price, area, image, author)) {
             try {
-                const response = await fetch('http://localhost:3000/api/addproperty', {
+                const response = await fetch('http://192.168.0.3:3000/api/add', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -63,9 +64,7 @@ function CreateProperties({ navigation }) {
                     }),
                 });
                 const json = await response.json();
-                console.log('create hecho');
-                
-                // Alert.alert("Property created successfuly");
+                Alert.alert("Property created successfuly");
                 navigation.navigate('ListProperties', {
                     author: author
                 });
@@ -77,17 +76,18 @@ function CreateProperties({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <TextInput style={styles.textInput} placeholder="Title" onChangeText={text => setTitle(text)} />
-            <TextInput style={styles.textInput} placeholder="Type" onChangeText={text => setType(text)} />
-            <TextInput style={styles.textInput} placeholder="Address" onChangeText={text => setAddress(text)} />
-            <TextInput style={styles.textInput} placeholder="Number of Rooms" onChangeText={text => setRooms(text)} />
-            <TextInput style={styles.textInput} placeholder="Price" onChangeText={text => setPrice(text)} />
-            <TextInput style={styles.textInput} placeholder="Area" onChangeText={text => setArea(text)} />
-            <TextInput style={styles.textInput} placeholder="Image" onChangeText={text => setImage(text)} />
-
-            <TouchableHighlight style={styles.createPropertyButton} onPress={createProperties}>
-                <Text style={styles.textStyleButton}>Create Property</Text>
-            </TouchableHighlight>
+            <View style={styles.containerForm}>
+                <TextInput style={styles.textInput} placeholder="Title" onChangeText={text => setTitle(text)} />
+                <TextInput style={styles.textInput} placeholder="Type" onChangeText={text => setType(text)} />
+                <TextInput style={styles.textInput} placeholder="Address" onChangeText={text => setAddress(text)} />
+                <TextInput style={styles.textInput} placeholder="Number of Rooms" onChangeText={text => setRooms(text)} />
+                <TextInput style={styles.textInput} placeholder="Price" onChangeText={text => setPrice(text)} />
+                <TextInput style={styles.textInput} placeholder="Area" onChangeText={text => setArea(text)} />
+                {/* <TextInput style={styles.textInput} placeholder="Image" onChangeText={text => setImage(text)} /> */}
+                <TouchableHighlight style={styles.createPropertyButton} onPress={createProperties}>
+                    <Text style={styles.textStyleButton}>Create Property</Text>
+                </TouchableHighlight>
+            </View>
         </View>
     );
 };
@@ -96,28 +96,49 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: color.Black,
+    },
+    containerForm:{
+        marginTop: 120,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.Gray,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        width: Dimensions.get('screen').width * 0.8,
+        height: '60%',
     },
     textInput: {
         padding: 10,
-        borderColor: 'black',
-        borderRadius: 5,
-        borderWidth: 1,
+        borderColor: color.Black,
+        backgroundColor: color.Gray,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
         marginTop: 10,
-        width: Dimensions.get('screen').width * 0.9
+        color: color.White,
+        width: Dimensions.get('screen').width * 0.6
     },
     createPropertyButton: {
         marginTop: 10,
         padding: 15,
-        backgroundColor: '#0288d1',
-        borderRadius: 5,
-        width: Dimensions.get('screen').width * 0.9,
+        backgroundColor: color.AquaMarine,
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        height: 40,
+        width: Dimensions.get('screen').width * 0.4,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     textStyleButton: {
-        color: 'white',
+        color: color.White,
         fontWeight: 'bold',
-        fontSize: 17
+        fontSize: 17,
+        textShadowColor: color.Black,
+        textShadowRadius: 1.5,
     }
 });
 
