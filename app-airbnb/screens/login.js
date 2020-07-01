@@ -45,7 +45,7 @@ function Login({ navigation }) {
         <TouchableHighlight style={styles.buttom} onPress={getUser}>
           <Text style={styles.buttomText}>Sign in</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.buttom} onPress={()=>navigation.navigate('ListPropertiesUser')}>
+        <TouchableHighlight style={styles.buttom} onPress={()=>navigation.navigate('CreateUsers')}>
           <Text style={styles.buttomText}>Sign up</Text>
         </TouchableHighlight>
       </View>

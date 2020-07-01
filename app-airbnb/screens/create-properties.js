@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         borderColor: color.Black,
         borderWidth: 2,
         height: 40,
-        width: Dimensions.get('screen').width * 0.4,
+        width: Dimensions.get('screen').width * 0.45,
         justifyContent: 'center',
         alignItems: 'center'
     },
