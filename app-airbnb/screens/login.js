@@ -26,7 +26,8 @@ function Login({ navigation }) {
                 
         if(json.res.success){
           navigation.navigate('ListProperties',{
-            author: json.res.data[0]._id         
+            author: json.res.data[0]._id,
+            name: json.res.data[0].name
           });
          
         }else{
