@@ -3,28 +3,36 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
 import CardComponent from './card-component'
+import color from '../styles/colors';
 
 function ListProperties({ navigation }) {
-    // const { author } = route.params; //Id de inicio de sesion  
-      
+    const { author } = route.params; //Id de inicio de sesion  
+    const { name } = route.params
     const isFocused = useIsFocused();
-    const [properties, setProperties] = useState([]);
+    const [appointments, setAppointments] = useState([]);
 
     /* Data for the flatlist */
-    const fetchProperties = async () => {
-        // let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
-        let response = await fetch('http://localhost:3000/api/listproperties');
+    const fetchAppointments = async () => {
+        //let response = await fetch('http://192.168.0.3:80/citapp_api_php/api/listappointments');
+        let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
         let jsonResponse = await response.json();
-        setProperties(jsonResponse.res.data);
+        setAppointments(jsonResponse.res.data);
         console.log('json response: ',jsonResponse.res.data);
         
     }
     useEffect(() => {
-        fetchProperties();
+        fetchAppointments();
     }, [isFocused]);
 
     return (
         <View style={styles.container}>
+          <Text>{name}</Text>
+            <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
+                navigation.navigate('Create Property', {
+                    author: author
+                })}>
+                <Text style={styles.createAppointmentButtonText}>Create Property</Text>
+            </TouchableHighlight>
 
             <FlatList
                 data={properties}
@@ -38,7 +46,34 @@ function ListProperties({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: color.Black,
+        color: color.White,
+        alignItems: 'center',
+    },
+    image: {
+        width: 160,
+        height: 160,
+        borderWidth: 1,
+    },
+    createAppointmentButton: {
+        backgroundColor: color.AquaMarine,
+        padding: 20,
+        margin: 10,
+        alignItems: 'center',
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        height: 40,
+        justifyContent:'center',
+        alignItems: 'center',
+    },
+    createAppointmentButtonText: {
+        color: color.White,
+        fontWeight: 'bold',
+        fontSize: 17,
+        textShadowColor: color.Black,
+        textShadowRadius: 1.5,
     },
 });
 
