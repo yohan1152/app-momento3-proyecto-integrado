@@ -18,17 +18,17 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="ListProperties" component={ListProperties} options={{ title: 'AIR BnB - Avaible Properties ', headerStyle:{backgroundColor: '#272727'}, 
-        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  /> */}
-        {/* <Stack.Screen name="Login" component={Login} options={{ title: 'AIR BnB - Login ', headerStyle:{backgroundColor: '#272727'}, 
-        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  /> */}
-        {/* <Stack.Screen name="ListPropertiesUser" component={ListPropertiesUser} options={{ title: 'AIR BnB - My Properties ', headerStyle:{backgroundColor: '#272727'}, 
-        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} /> */}
-        {/* <Stack.Screen name="CreateProperties" component={CreateProperties} options={{ title: 'AIR BnB - Create', headerStyle:{backgroundColor: '#272727'}, 
-        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  /> */}
-        <Stack.Screen name="UpdateProperties" component={UpdateProperties} options={{ title: 'AIR BnB - Update', headerStyle:{backgroundColor: '#272727'}, 
+        <Stack.Screen name="ListProperties" component={ListProperties} options={{ title: 'AIR BnB - Avaible Properties ', headerStyle:{backgroundColor: '#272727'}, 
+        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  />
+        <Stack.Screen name="Login" component={Login} options={{ title: 'AIR BnB - Login ', headerStyle:{backgroundColor: '#272727'}, 
+        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  />
+        <Stack.Screen name="ListPropertiesUser" component={ListPropertiesUser} options={{ title: 'AIR BnB - My Properties ', headerStyle:{backgroundColor: '#272727'}, 
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />
-        <Stack.Screen name="CancelProperties" component={CancelProperties} options={{ title: 'AIR BnB -Delete', headerStyle:{backgroundColor: '#272727'}, 
+        <Stack.Screen name="CreateProperties" component={CreateProperties} options={{ title: 'AIR BnB - Create properties', headerStyle:{backgroundColor: '#272727'}, 
+        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}}  />
+        <Stack.Screen name="UpdateProperties" component={UpdateProperties} options={{ title: 'AIR BnB - Update properties', headerStyle:{backgroundColor: '#272727'}, 
+        headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />
+        <Stack.Screen name="CancelProperties" component={CancelProperties} options={{ title: 'AIR BnB - Delete', headerStyle:{backgroundColor: '#272727'}, 
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />
         <Stack.Screen name="CreateUsers" component={CreateUsers} options={{ title: 'AIR BnB - Create user', headerStyle:{backgroundColor: '#272727'}, 
         headerTintColor: color.AquaMarine, headerTitleStyle: {fontWeight: 'bold'}}} />
