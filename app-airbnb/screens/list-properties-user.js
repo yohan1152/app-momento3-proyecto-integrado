@@ -35,7 +35,7 @@ function ListPropertiesUser({ route,navigation }) {
 
             <FlatList
                 data={properties}
-                renderItem={({ item }) => <CardComponentUser properties={item} user={author} />}
+                renderItem={({ item }) => <CardComponentUser properties={item} />}
                 keyExtractor={item => item._id}
             />
         </View>
