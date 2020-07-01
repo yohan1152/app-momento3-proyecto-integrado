@@ -30,7 +30,7 @@ function validate(title, type, address, rooms, price, area) {
     }
 }
 
-function CreateProperties({ route, navigation }) {
+function CreateProperties({ navigation }) {
     // const { author } = route.params; 
     const { author } = '5ef8fd4d6072c6366c19017e'; //quemado
     const [title, setTitle] = useState("");
@@ -45,7 +45,7 @@ function CreateProperties({ route, navigation }) {
     const createProperties = async () => {
         if (validate(title, type, address, rooms, price, area, image, author)) {
             try {
-                const response = await fetch('http://192.168.0.3:3000/api/add', {
+                const response = await fetch('http://localhost:3000/api/addproperty', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -63,7 +63,9 @@ function CreateProperties({ route, navigation }) {
                     }),
                 });
                 const json = await response.json();
-                Alert.alert("Property created successfuly");
+                console.log('create hecho');
+                
+                // Alert.alert("Property created successfuly");
                 navigation.navigate('ListProperties', {
                     author: author
                 });
@@ -81,7 +83,7 @@ function CreateProperties({ route, navigation }) {
             <TextInput style={styles.textInput} placeholder="Number of Rooms" onChangeText={text => setRooms(text)} />
             <TextInput style={styles.textInput} placeholder="Price" onChangeText={text => setPrice(text)} />
             <TextInput style={styles.textInput} placeholder="Area" onChangeText={text => setArea(text)} />
-            {/* <TextInput style={styles.textInput} placeholder="Image" onChangeText={text => setImage(text)} /> */}
+            <TextInput style={styles.textInput} placeholder="Image" onChangeText={text => setImage(text)} />
 
             <TouchableHighlight style={styles.createPropertyButton} onPress={createProperties}>
                 <Text style={styles.textStyleButton}>Create Property</Text>

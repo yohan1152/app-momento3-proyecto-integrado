@@ -7,7 +7,7 @@ const router = express.Router();
 
 //Routes user
 router.get('/listusers', controllerUser.listusers);
-router.get('/getuser', controllerUser.getuser);
+router.post('/getuser', controllerUser.getuser);
 router.get('/getuserexist', controllerUser.getuserexist);
 router.post('/adduser', controllerUser.adduser);
 router.put('/updateuser', controllerUser.updateuser);

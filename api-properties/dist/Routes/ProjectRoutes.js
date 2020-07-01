@@ -22,7 +22,7 @@ var router = _express2.default.Router();
 
 //Routes user
 router.get('/listusers', _UserController2.default.listusers);
-router.get('/getuser', _UserController2.default.getuser);
+router.post('/getuser', _UserController2.default.getuser);
 router.get('/getuserexist', _UserController2.default.getuserexist);
 router.post('/adduser', _UserController2.default.adduser);
 router.put('/updateuser', _UserController2.default.updateuser);

@@ -6,7 +6,7 @@ import { Asset } from 'expo-asset';
 
 function CardComponent(props) {
     const navigation = useNavigation();
-    const { userid, _id, title, type, address, rooms, price, area, image } = props.appointment;
+    const { author, _id, title, type, address, rooms, price, area, image } = props.properties;
     const routeAssets = '../assets/'
     // console.log(routeAssets+image);
     // const imageURI = Asset.fromModule(require('../assets/casa1.jpg')).uri;
@@ -23,9 +23,9 @@ function CardComponent(props) {
             <Text style={styles.text}>Area: {area}</Text>
             <Text style={styles.text}>ID: {_id}</Text>
             <Text style={styles.text}>image: {image}</Text>
-            <Image source={require('../assets/casa.jpg')}></Image>
+        
 
-            <View style={styles.containerButtons}>
+            {/* {/* <View style={styles.containerButtons}>
                 <TouchableHighlight style={styles.updateButton} onPress={() =>
                     navigation.navigate('UpdateAppointment', {
                         itemId: _id,
@@ -34,7 +34,7 @@ function CardComponent(props) {
                         itemAddress: address,
                         itemRooms: rooms,
                         itemArea:area,
-                        itemUserid: userid
+                        itemUserid: author
                     })}>
                     <Text style={styles.updateButtonText}>Update</Text>
                 </TouchableHighlight>
@@ -46,13 +46,13 @@ function CardComponent(props) {
                         itemAddress: address,
                         itemRooms: rooms,
                         itemArea:area,
-                        itemUserid: userid
+                        itemUserid: author
                         
                     })
-                }}>
-                    <Text style={styles.cancelButtonText}>Cancel</Text>
-                </TouchableHighlight>
-            </View>
+                }}> */}
+                    {/* <Text style={styles.cancelButtonText}>Cancel</Text> */}
+                {/* </TouchableHighlight> */}
+            {/* </View> */}
         </View>
     );
 };

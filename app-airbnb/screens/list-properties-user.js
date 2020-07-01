@@ -4,8 +4,8 @@ import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
 import CardComponent from './card-component'
 
-function ListProperties({ navigation }) {
-    // const { author } = route.params; //Id de inicio de sesion  
+function ListProperties({ route, navigation }) {
+    const { author } = route.params; //Id de inicio de sesion  
     console.log('log author',author);
       
     const isFocused = useIsFocused();
@@ -14,7 +14,7 @@ function ListProperties({ navigation }) {
     /* Data for the flatlist */
     const fetchProperties = async () => {
         // let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
-        let response = await fetch('http://localhost:3000/api/listproperties');
+        let response = await fetch('http://localhost:3000/api/getpropertiesuser?'+author);
         let jsonResponse = await response.json();
         setProperties(jsonResponse.res.data);
         console.log('json response: ',jsonResponse.res.data);
@@ -27,12 +27,12 @@ function ListProperties({ navigation }) {
     return (
         <View style={styles.container}>
           
-            {/* <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
+            <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
                 navigation.navigate('Create Property', {
                     author: author
                 })}>
-                {/* <Text style={styles.createAppointmentButtonText}>Create Property</Text> */}
-            {/* </TouchableHighlight> */} 
+                <Text style={styles.createAppointmentButtonText}>Create Property</Text>
+            </TouchableHighlight>
 
             {/* <Image source={require('../assets/casa1.jpg')} ></Image> */}
            

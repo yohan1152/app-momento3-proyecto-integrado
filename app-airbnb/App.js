@@ -15,8 +15,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="Login" component={Login} options={{ title: 'Login' }} /> */}
-        {/* <Stack.Screen name="ListProperties" component={ListProperties} options={{ title: 'Properties' }} /> */}
+        <Stack.Screen name="Login" component={Login} options={{ title: 'Login' }} />
+        <Stack.Screen name="ListProperties" component={ListProperties} options={{ title: 'Properties' }} />
         <Stack.Screen name="CreateProperties" component={CreateProperties} options={{ title: 'Create Property' }} />
         <Stack.Screen name="UpdateProperties" component={UpdateProperties} options={{ title: 'Update Property' }} />
         <Stack.Screen name="CancelProperties" component={CancelProperties} options={{ title: 'Cancel Property' }} />

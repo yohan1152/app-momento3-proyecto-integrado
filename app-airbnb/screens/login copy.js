@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, Dimensions, Alert, FlatList} from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Alert } from 'react-native';
 import { TouchableHighlight,  TextInput } from "react-native-gesture-handler";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState("");    
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState([]);
 
-  const getUser = async () => {
-
-        const url = "http://localhost:3000/api/getuser"
+  const getEmail = async () => {
+    
+    try {
+        const url = "http://localhost:3000/api/listusers"
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -21,18 +21,20 @@ function Login({ navigation }) {
                 password: password
             }),
         });
-        let json = await response.json();  
-        console.log('json data', json.res.data[0]._id );
-                
-        if(json.res.success){
+        const json = await response.json();   
+        console.log('json login', json);
+             
+        if(json.email){
           navigation.navigate('ListProperties',{
-            author: json.res.data[0]._id         
+            emailId: json.email._id
           });
-         
         }else{
           Alert.alert("Authentication Error",json.response);
         }
-  }
+    } catch (error) {
+        Alert.alert("An error has ocurred: " + error);            
+    }
+}
   
   return (
     <View style={styles.loginScreenContainer}>
@@ -40,7 +42,7 @@ function Login({ navigation }) {
         <Text style={styles.logoText}>Air BnB</Text>
         <TextInput placeholder="Email" placeholderColor="#c4c3cb" style={styles.loginTextInput} onChangeText={text => setEmail(text)}/>
         <TextInput placeholder="Password" placeholderColor="#c4c3cb" style={styles.loginTextInput} secureTextEntry={true} onChangeText={text => setPassword(text)} />
-        <TouchableHighlight style={styles.loginButton} onPress={getUser}>
+        <TouchableHighlight style={styles.loginButton} onPress={getEmail}>
           <Text style={styles.loginButtonText}>Sign in</Text>
         </TouchableHighlight>
         <TouchableHighlight style={styles.registerButton} onPress={()=>navigation.navigate('CreateUsers')}>
