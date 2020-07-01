@@ -3,41 +3,40 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
 import CardComponent from './card-component'
+import color from '../styles/colors';
 
 function ListProperties({ navigation }) {
-    // const { author } = route.params; //Id de inicio de sesion  
-    console.log('log author',author);
-      
+    // const { userid } = params; //Id de inicio de sesion    
     const isFocused = useIsFocused();
-    const [properties, setProperties] = useState([]);
+    const [appointments, setAppointments] = useState([]);
 
     /* Data for the flatlist */
-    const fetchProperties = async () => {
-        // let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
-        let response = await fetch('http://localhost:3000/api/listproperties');
+    const fetchAppointments = async () => {
+        //let response = await fetch('http://192.168.0.3:80/citapp_api_php/api/listappointments');
+        let response = await fetch('http://www.json-generator.com/api/json/get/bUEFnRtzzC?indent=2');
         let jsonResponse = await response.json();
-        setProperties(jsonResponse.res.data);
+        setAppointments(jsonResponse.res.data);
         console.log('json response: ',jsonResponse.res.data);
         
     }
     useEffect(() => {
-        fetchProperties();
+        fetchAppointments();
     }, [isFocused]);
 
     return (
         <View style={styles.container}>
           
-            {/* <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
+            <TouchableHighlight style={styles.createAppointmentButton} onPress={() =>
                 navigation.navigate('Create Property', {
-                    author: author
+                    userid: userid
                 })}>
-                {/* <Text style={styles.createAppointmentButtonText}>Create Property</Text> */}
-            {/* </TouchableHighlight> */} 
+                <Text style={styles.createAppointmentButtonText}>Create Property</Text>
+            </TouchableHighlight>
 
             {/* <Image source={require('../assets/casa1.jpg')} ></Image> */}
            
             <FlatList
-                data={properties}
+                data={appointments}
                 renderItem={({ item }) => <CardComponent appointment={item} />}
                 keyExtractor={item => item._id}
             />
@@ -48,7 +47,10 @@ function ListProperties({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: color.Black,
+        color: color.White,
+        alignItems: 'center',
     },
     image: {
         width: 160,
@@ -56,19 +58,23 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     createAppointmentButton: {
-        backgroundColor: '#0288d1',
+        backgroundColor: color.AquaMarine,
         padding: 20,
         margin: 10,
         alignItems: 'center',
+        borderRadius: 10,
+        borderColor: color.Black,
+        borderWidth: 2,
+        height: 40,
+        justifyContent:'center',
+        alignItems: 'center',
     },
     createAppointmentButtonText: {
-        color: 'white',
+        color: color.White,
         fontWeight: 'bold',
-        fontSize: 17
-    },
-    title: {
-        fontSize: 16,
-        color: '#000'
+        fontSize: 17,
+        textShadowColor: color.Black,
+        textShadowRadius: 1.5,
     },
 });
 
