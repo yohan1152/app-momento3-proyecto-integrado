@@ -24,7 +24,7 @@ function Login({ navigation }) {
           }),
       });
       let json = await response.json();  
-      console.log('el name',json.res.data[0].name);
+      console.log('name',json.res.data[0].name);
               
       if(json.res.success){
         navigation.navigate('ListPropertiesUser',{

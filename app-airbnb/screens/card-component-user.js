@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     text:{
+        fontSize: 18,
         color: color.White,
     },
     containerButtons: {
