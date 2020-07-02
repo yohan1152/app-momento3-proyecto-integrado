@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, Switch} from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Switch } from 'react-native';
 import { TouchableHighlight, FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
 import CardComponent from './card-component'
@@ -9,6 +9,10 @@ function ListProperties({ navigation }) {
     
     const isFocused = useIsFocused();
     const [properties, setProperties] = useState([]);
+     //constantes del switch
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+ 
 
     const fetchAppointments = async () => {
         let response = await fetch('http://localhost:3000/api/listproperties');
@@ -21,12 +25,8 @@ function ListProperties({ navigation }) {
         fetchAppointments();
     }, [isFocused]);
 
-     //constantes del switch
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
     return (
-        <View style={styles.container}> 
+        <View style={styles.container}>    
             <View style={styles.containerButtom}>
                 <TouchableHighlight style={styles.buttom} onPress={() =>
                     navigation.navigate('Login')}>
@@ -43,16 +43,15 @@ function ListProperties({ navigation }) {
                     circleInActiveColor={color.Wthite}
                     onValueChange={toggleSwitch}
                 value={isEnabled}
-                />
+            />
             </View>
-            <View>
+
             <FlatList
                 data={properties}
                 renderItem={({ item }) => <CardComponent properties={item} />}
                 keyExtractor={item => item._id}
             />
-            </View>
-        </View>    
+        </View>
     );
 };
 
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         backgroundColor: color.Black,
-        // color: color.White,
+        color: color.White,
         alignItems: 'center',
         paddingBottom: 20,
     },
