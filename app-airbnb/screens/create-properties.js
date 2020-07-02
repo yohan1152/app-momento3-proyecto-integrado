@@ -32,8 +32,8 @@ function validate(title, type, address, rooms, price, area) {
 }
 
 function CreateProperties({ route, navigation }) {
-    // const { author } = route.params; 
-    const { author } = '5ef8fd4d6072c6366c19017e'; //quemado
+    const { author } = route.params; 
+    // const { author } = '5ef8fd4d6072c6366c19017e'; //quemado
     const [title, setTitle] = useState("");
     const [type, setType] = useState("");
     const [address, setAddress] = useState("");
@@ -44,9 +44,9 @@ function CreateProperties({ route, navigation }) {
     // const [author, setAuthor] = useState("");
     
     const createProperties = async () => {
-        if (validate(title, type, address, rooms, price, area, image, author)) {
+        if (validate(title, type, address, rooms, price, area, image)) {
             try {
-                const response = await fetch('http://192.168.0.3:3000/api/add', {
+                const response = await fetch('http://localhost:3000/api/addproperty', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',

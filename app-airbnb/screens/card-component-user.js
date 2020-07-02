@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import color from '../styles/colors';
 
 function CardComponentUser(props) {
-    const {author} = props.user;
-    console.log('author card',author);
+    // const {author} = props.user;
+    // console.log('author card',author);
     
     const navigation = useNavigation();
     const { _id, title, type, address, rooms, price, area, image } = props.properties;
@@ -33,8 +33,7 @@ function CardComponentUser(props) {
                         price: price,
                         rooms: rooms,
                         area: area,
-                        image: image,
-                        author: author
+                        image: image
                         
                     })}>
                     <Text style={styles.buttonText}>Update</Text>
