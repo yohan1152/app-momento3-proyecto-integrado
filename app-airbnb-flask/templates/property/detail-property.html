@@ -1,0 +1,27 @@
+{% extends 'layouts/layout.html'%}
+{% block content %}
+<div class="container">
+    <h1 class="mb-5">Detalle de la propiedad</h1>
+    <img src="../static/assets/{{property['image']}}" style="width: 500px;" class="img-fluid mb-4" alt="imagen propiedades">
+    <div class="row">
+        <div class="col-12">
+            <p><strong>Title: </strong>{{property['title']}}</p>
+        </div>
+        <div class="col-12">
+            <p><strong>Type: </strong>{{property['type']}}</p>
+        </div>
+        <div class="col-12">
+            <p><strong>Address: </strong>{{property['address']}}</p>
+        </div>
+        <div class="col-12">
+            <p><strong>Rooms: </strong>{{property['rooms']}}</p>
+        </div>
+        <div class="col-12">
+            <p><strong>Price: </strong>{{property['price']}}</p>
+        </div>
+        <div class="col-12">
+            <p><strong>Area: </strong>{{property['area']}}</p>
+        </div>
+    </div>
+</div>
+{% endblock%}

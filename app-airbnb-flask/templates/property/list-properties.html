@@ -1,0 +1,24 @@
+{% extends 'layouts/layout.html' %}
+{% block content %}
+<h1 class="text-center mb-5">Propiedades</h1>
+<div class="container">
+    <div class="row">
+        {% for property in properties["res"]["data"] %}
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" style="height: 250px;" src="static/assets/{{property['image']}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{property['title']}}</h5>
+                        <p class="card-text">$ {{property['price']}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/detailproperty/{{property['_id']}}" class="btn btn-primary btn-block">Ver</a>
+                    </div>
+                </div>           
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
