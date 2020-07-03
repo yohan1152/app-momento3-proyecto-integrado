@@ -12,13 +12,6 @@ class RequestsApi():
             return response.json()
 
     @staticmethod
-    def logout_api():
-        try:
-            return True
-        except:
-            return False
-
-    @staticmethod
     def save_user_api(data):
         try:
             response = req.post('http://localhost:3000/api/adduser', json = data)
@@ -35,11 +28,12 @@ class RequestsApi():
     
     #Métodos para Category
     @staticmethod
-    def save_category_api():
+    def save_category_api(data):
         try:
-            return True
+            response = req.post('http://localhost:3000/api/addcategory', json = data)
+            return response.json()
         except:
-            return False
+            return response.json()
 
     @staticmethod
     def get_all_categories_api():

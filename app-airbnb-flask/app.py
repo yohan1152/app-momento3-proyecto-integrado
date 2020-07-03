@@ -56,6 +56,33 @@ def detailproperty(id):
         return "Error en el servidor"
 
 
+@app.route('/createcategory')
+def createcategory():
+    if session_validate() == False:
+        return redirect(url_for('signin'))
+
+    return render_template('category/add-category.html')
+
+
+@app.route('/addcategory', methods = ['POST'])
+def addcategory():
+    try:
+        if session_validate() == False:
+            return redirect(url_for('signin'))
+
+        name_category = request.form['name_category']
+
+        data = {"name_category":name_category}
+        res = RequestsApi.save_category_api(data)
+
+        if res["res"]["success"] == True:
+            return redirect(url_for('registerproperty')) 
+        else:
+            return "Error al crear la categoria..."
+    except:
+        return "Error en el servidor"
+
+
 @app.route('/deleteproperty/<id>')
 def deleteproperty(id):
     try:
@@ -131,9 +158,12 @@ def addUser():
         data = {"name":name, "last_name": last_name, "email":email, "password":password}
         res = RequestsApi.save_user_api(data)
 
+        rescategory = RequestsApi.get_all_categories_api()
+        data2 = rescategory['res']['data']
+
         if res["res"]["success"] == True:
             if create_session(email, password):
-                return render_template('property/add-property.html')
+                return render_template('property/add-property.html', categories=data2)
             else:
                 return render_template('user/sign-in.html')
     except:

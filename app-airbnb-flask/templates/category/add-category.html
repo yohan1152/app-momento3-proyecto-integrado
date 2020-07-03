@@ -1,0 +1,15 @@
+{% extends 'layouts/layout.html'%}
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Registrar categoria</h1>
+    <form method="POST" action="/addcategory">
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label>Name category</label>
+                <input type="text" class="form-control" id="name_category" placeholder="Name category" name="name_category" required>
+                <button type="submit" class="btn btn-outline-success btn-block mr-md-5 mt-4">Register category</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock%}

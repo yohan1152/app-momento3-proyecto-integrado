@@ -3,50 +3,50 @@
 <div class="container">
     <h1>Actualiza propiedad</h1>
     <form method="POST" action="/updateproperty">
-        <div class="form-group col-md-6">
+        <div class="form-group">
             <input type="hidden" class="form-control" id="id" placeholder="Id property" name="id" value="{{pro['_id']}}">
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group">
             <input type="hidden" class="form-control" id="date" placeholder="Date" name="date" value="{{pro['date']}}">
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group">
             <input type="hidden" class="form-control" id="image" placeholder="Image" name="image" value="{{pro['image']}}">
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group">
             <input type="hidden" class="form-control" id="author" placeholder="Author" name="author" value="{{pro['author']}}">
         </div>
         <div class="form-row">
             <div class="form-group col-md-5 mr-md-5">
                 <label>Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{pro['title']}}">
+                <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{pro['title']}}" required>
             </div>
             <div class="form-group col-md-6">
                 <label>Property type</label>
                 <select class="custom-select" id="inputGroupSelect01" name="type">
-                    <option selected>Casa</option>
-                    <option selected>Apartamento</option>
-                    <option selected>Hostal</option>
-                    <option selected>Finca</option>
                     {% for category in categories %}
-                    <option value="{{category['name_category']}}">{{category['name_category']}}</option>
+                        {% if category['name_category'] == pro['type']: %}
+                            <option value="{{category['name_category']}}" selected>{{category['name_category']}}</option>
+                        {% else: %}
+                            <option value="{{category['name_category']}}">{{category['name_category']}}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group col-md-5 mr-md-5">
                 <label>Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Address" name="address" value="{{pro['address']}}">
+                <input type="text" class="form-control" id="address" placeholder="Address" name="address" value="{{pro['address']}}" required>
             </div>
             <div class="form-group col-md-6">
                 <label>Rooms</label>
-                <input type="text" class="form-control" id="rooms" placeholder="Rooms" name="rooms" value="{{pro['rooms']}}">
+                <input type="number" class="form-control" id="rooms" placeholder="Rooms" name="rooms" value="{{pro['rooms']}}" required>
             </div>
             <div class="form-group col-md-5 mr-md-5">
                 <label>price</label>
-                <input type="text" class="form-control" id="price" placeholder="Price" name="price"value="{{pro['price']}}">
+                <input type="number" class="form-control" id="price" placeholder="Price" name="price"value="{{pro['price']}}" required>
             </div>
             <div class="form-group col-md-6">
                 <label>Area</label>
-                <input type="text" class="form-control" id="area" placeholder="Area" name="area" value="{{pro['area']}}">
+                <input type="number" class="form-control" id="area" placeholder="Area" name="area" value="{{pro['area']}}" required>
             </div>
         </div>
         
