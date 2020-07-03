@@ -1,0 +1,3 @@
+Video sobre el funcionamiento de la aplicación web realizada en Flask 
+
+https://drive.google.com/file/d/1_UyItcTxsl-uX6HFlFNlkzG3N_UNqK-y/view?usp=sharing
