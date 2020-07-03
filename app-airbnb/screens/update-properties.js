@@ -25,7 +25,7 @@ function UpdateProperties({ route, navigation }) {
                     rooms: rooms,
                     area: area,
                     image: image,
-                    author: author
+                    //author: author
                 }),
             });
             const json = await response.json();

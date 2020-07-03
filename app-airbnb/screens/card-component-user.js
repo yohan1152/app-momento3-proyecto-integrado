@@ -34,7 +34,7 @@ function CardComponentUser(props) {
                         rooms: rooms,
                         area: area,
                         image: image,
-                        author: author
+                        //author: author
                         
                     })}>
                     <Text style={styles.buttonText}>Update</Text>
